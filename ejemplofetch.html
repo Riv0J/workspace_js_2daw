@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>Ejemplo 2 fetch</title>
+</head>
+<body>
+    <h1 class="title"> Random User Generator</h1>
+<div class="user-profile">
+	<img id="avatar" src="" />
+    <div id="fullname"></div>
+  <div id="username">
+  	
+  </div>
+    <div class="description">
+      <div>Email: <span id="email"></span></div>
+      <div>City: <span id="city"></span></div>
+  </div>
+  <div class="footer">
+    <button id="btn">Ver candidat@s!</button>
+ </div>
+</div>
+</body>
+<script>
+const url =' https://randomuser.me/api/';
+
+let avatar = document.getElementById('avatar');
+let fullname = document.getElementById('fullname');
+let username = document.getElementById('username');
+let email = document.getElementById('email');
+let city = document.getElementById('city');
+let btn = document.getElementById('btn');
+
+ //cargamos la info cuando pulsamos el botón
+ let index=0;
+ document.getElementById("btn").onclick = ()=>{
+        //hacemos la petición asíncrona con fetch
+        //.then : recogemos la información
+        //      .then : tratamos la información 
+        //catch : gestionamos posibles errores 
+        
+        fetch(url)
+        .then((response)=>{
+            return response.json(); //recogemos la info
+        })
+        .then((usuarios)=>{
+            //qué hago con la información recibida
+            console.log(usuarios.results);
+            fullname.innerHTML=usuarios.results[index].name.first+" "+usuarios.results[index].name.last;
+            username.innerHTML=usuarios.results[index].login.username;
+            email.innerHTML=usuarios.results[index].email;
+            city.innerHTML=usuarios.results[index].location.city;
+            avatar.src= usuarios.results[index].picture.thumbnail;
+        })
+        .catch((err) =>{
+            console.log(err);
+        });
+
+    }
+
+</script>
+</html>

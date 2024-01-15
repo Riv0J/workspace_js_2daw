@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 2 ajax y archivo de texto propio</title>
+</head>
+<body>
+    <h1></h1>
+</body>
+</html>
+<script>
+    window.onload = ()=>{
+        let xhr = new XMLHttpRequest();
+        //controlamos los cambios de estado de la petición
+        xhr.onreadystatechange = ()=>{
+            if((xhr.readyState==4)&&(xhr.status==200)){
+                document.getElementsByTagName("h1")[0].innerHTML = xhr.responseText;
+            }
+        }
+        xhr.open("GET", "files/holamundo.txt", true);
+        xhr.send();
+        //abrimos petición
+        //enviamos peticion
+    }
+</script>

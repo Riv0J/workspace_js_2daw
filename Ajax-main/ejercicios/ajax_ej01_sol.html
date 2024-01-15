@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hola Mundo</title>
+    <meta charset="UTF-8">
+    
+
+</head>
+
+<body>    
+    <form name="form1">
+        <textarea id="textarea1" rows="10" cols="100" disabled="disabled"></textarea>
+        <br>
+        <input id="boton1" type="button" value="Cargar contenido con xmlhttprequest">
+        <input id="boton2" type="button" value="Cargar contenido con fetch">
+    </form>
+</body>
+</html>
+<script type="text/javascript" language="javascript">
+    /*
+    vamos a cargar contenido en el textarea procedente de holamundo.txt
+    */
+            document.getElementById("boton1").onclick = ()=>{
+                //cargamos la info usando xmlhttprequest
+                let xhr = new XMLHttpRequest();
+                //mirar el estado para tratar la información una vez recibida
+                xhr.onreadystatechange = ()=>{
+                    if((xhr.status==200)&&(xhr.readyState==4)){
+                        document.getElementById("textarea1").innerHTML=xhr.responseText;
+                    }
+                }
+                //abrir la petición
+                xhr.open("GET", "holamundo.txt", true);
+                //enviar la petición
+                xhr.send();
+            }
+            document.getElementById("boton2").onclick = ()=>{
+                //cargamos la info usando fetch
+                fetch("holamundo.txt")
+                .then((response)=>{
+                    return response.text();
+                })
+                .then((texto)=>{
+                    document.getElementById("textarea1").innerHTML=texto;
+                })
+                .catch((err)=>{
+                    console.log(err);
+                }
+                );
+                
+            }
+        </script>

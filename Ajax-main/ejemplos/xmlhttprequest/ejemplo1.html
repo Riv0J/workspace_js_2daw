@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo1 Ajax</title>
+</head>
+<body>
+    <h1>Trabajamos Ajax con archivos de texto externos</h1>
+    <p id="informacion"></p>   
+    <input type="button" id="cargarInformacion" value="cargarInformacion"/> 
+</body>
+</html>
+<script>
+    const boton = document.getElementById("cargarInformacion");
+    boton.onclick = ()=>{
+        //creamos el objeto XMLHttpRequest 
+        let peticion=new XMLHttpRequest();
+        //comprobamos los cambios de estado de la petición
+        peticion.onreadystatechange = ()=>{
+            //hacemos cosas con la información cuando la
+            //petición ha sido procesada con éxito
+            if((peticion.status==200)&&(peticion.readyState==4)){
+                document.getElementById("informacion").innerHTML=peticion.responseText;
+            }
+        }
+        //abrimos la petición
+        //Le decimos qué tipo de petición : GET/POST
+        //Le decimos de qué fichero (mostrando ruta) cogemos la información
+        //el boolean indica si la petición es asíncrona (true) o no (false)
+        peticion.open("GET", "https://www.w3.org/TR/PNG/iso_8859-1.txt", true);
+        //enviar la petición
+        peticion.send();
+    }
+    
+    
+</script>
