@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&display=swap" rel="stylesheet"> 
+    
+    <!-- LIBS / CDNS -->
+    <!-- <script src="https://github.com/christinecha/choreographer-js/blob/master/dist/choreographer.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+    
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/ejercicio1.css">
+    <title>ejercicio 1 anime.js</title>
+</head>
+<body>
+    <h1 id="titulo">Titulo con choreographer.js</h1>
+    <div class="card-container">
+        <div id="card">
+            <div class="front">
+                anime.js
+            </div>
+            <div class="back">
+                Javascript
+            </div>
+        </div>
+    </div>
+</body>
+<script src="libs/choreographer-js-master/dist/choreographer.min.js"> </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        //1
+        let chor = new Choreographer({
+
+        animations: [
+        {
+            range: [window.innerWidth/2, window.innerWidth],
+            selector: '#titulo',
+            type: 'scale',
+            style: 'padding-top',
+            from: 5, to: 40, unit: 'vh' 
+        },
+        { range: [-1, window.innerWidth], selector: '#titulo', type: 'change', style: 'backgroundColor', to: '#EFD81D' },
+        ]
+        })
+
+        window.addEventListener('mousemove', function(e) {
+        chor.runAnimationsAt(e.clientX)
+        })
+
+        //2
+        let playing = false;
+        let card = document.querySelector("#card");
+        function buttonOnClick(){
+            
+            if(playing) return;
+            playing = true;
+            anime({
+                targets: card,
+                //varios keyframes
+                scaleX: [{value:1}, {value:0.25}, {value:1, delay: 250}],
+                scaleY: [{value:1}, {value:1.5}, {value:1, delay: 250}],
+                rotateY: {value: "+=180", delay: 200},
+                easing: "easeInOutSine",
+                duration: 400,
+                complete: function(anim) {
+                    playing = false;
+                }
+            })
+        }
+
+        document.querySelector('#card').addEventListener("click", buttonOnClick);
+    });
+</script>
+
+</html>

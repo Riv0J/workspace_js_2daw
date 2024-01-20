@@ -1,0 +1,59 @@
+body {
+    background: #cfd8dc;
+}
+
+.card-container, h1 {
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 4em;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 2em 0;
+
+}
+h1{
+    padding: 2%;
+    font-size: 2em;
+    text-align: center;
+    background-color:#cfd8dc;
+}
+#card {
+    position: relative;
+
+    height: 100%;
+
+    border-radius: 10px;
+
+    width: 100%;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 10px;
+
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+}
+
+.front {
+    color: #000;
+    background: #EFD81D;
+}
+
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: rotateY(180deg);
+
+    color: #EFD81D;
+    background: #000;
+}

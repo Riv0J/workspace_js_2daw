@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- LIBS / CDNS -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+
+        <script src="libs/jquery.textillate.js"></script>
+
+        <script src="libs/jquery.lettering.js"></script>
+
+        <script src="libs/jquery.fittext.js"></script>
+
+        <link rel="stylesheet" href="css/animate.css"></link>
+
+
+        <!-- custom css -->
+        <link rel="stylesheet" href="css/ejercicio2.css">
+
+        <title>ejercicio 2 anime.js</title>
+    </head>
+    <body>
+        <h1 class="tlt" data-in-effect="rollIn">Probando textillate y anime</h1>
+        <div class='center'>
+            <div class='loader'>
+                <div class='caja caja-1'></div>
+                <div class='caja caja-2'></div>
+                <div class='caja caja-3'></div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        //1
+        $(document).ready(function() {
+            $(".tlt").textillate({
+                loop: false,
+                in: {
+                    effect: "rotateIn",
+                    delayScale: 1,
+                    shuffle: false,
+                }
+            });
+        });
+        //2
+        let playing = false;
+        function onHover(){
+
+            if(playing) return;
+            playing = true;
+
+            anime({
+                targets: '.caja-1',
+                zIndex: '-1',
+                translateX: '30%',
+                translateY: '-35%',
+                direction: 'alternate',
+                delay: 500,
+                loop: true
+            });
+
+            anime({
+                targets: '.caja-2',
+                zIndex: '0',
+                scale: 1.5,
+                direction: 'alternate',
+                delay: 500,
+                loop: true
+            });
+
+            anime({
+                targets: '.caja-3',
+                zIndex: '0',
+                translateX: '-30%',
+                translateY: '60%',
+                direction: 'alternate',
+                delay: 500,
+                loop: true
+            });
+        }
+
+        $('.loader').css("display","flex");
+        $('.loader').hover(onHover);
+    </script>
+</html>

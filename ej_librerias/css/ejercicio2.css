@@ -1,0 +1,32 @@
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+h1 {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 4em;
+  text-align: center;
+}
+
+.caja {
+  
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+ margin: 0 4px;
+}
+
+.caja-1 {
+  background-color: #B93101;
+}
+
+.caja-2 {
+  background-color: #D47401;
+}
+
+.caja-3 {
+  background-color: #F4C31C;
+}
