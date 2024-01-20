@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>EJERCICIO 2</title>
+    <style type="text/css">
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        body > ul > li {
+            border: 3px solid #000000;
+        }
+        ul {
+            list-style: none;
+        }
+        #redesI, #redesY {
+            display: none;
+        }
+        #rrss {
+            display: flex;
+        }
+        #rrss li {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        body > ul li ul {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="ejercicio4-sol.js"></script>
+
+</head>
+
+<body>
+   <h1>REDES SOCIALES</h1>
+    <ul id="rrss">
+<!-- Instagram -->
+        <li>
+            INSTAGRAM
+
+            <ul id="redesI">
+              <li><img src="assets/instagram.png" /></li>
+               <li><img src="assets/instagram2.png" /></li>
+            </ul>
+
+            <button>Ver iconos</button>
+            <button>Eliminar rrss</button>
+        </li>
+
+<!-- Youtube -->
+        <li>
+            YOUTUBE
+
+            <ul id="redesY">
+              <li><img src="assets/youtube.png" /></li>
+              <li><img src="assets/youtube2.png" /></li>
+            </ul>
+
+            <button>Ver iconos</button>
+            <button>Eliminar rrss</button>
+        </li>
+
+
+    </ul>
+     <button>Reiniciar</button>
+
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+	<meta charset="utf-8"/>
+
+	<title>Ejercicio1</title>
+	<link rel="stylesheet" href="css/estilos.css" type="text/css" media="screen" />
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+	<div id="contenedor">    
+		<h2>NOTICIA</h2>
+		<div id="opciones">
+			<div class="label">Tamaño del texto</div>
+			<button id="defecto">Por defecto</button>
+			<button id="mas">Más grande</button>
+			<button id="menos">Más pequeño</button>
+		</div>
+
+		<div class="noticia">
+			<p>Mikael Hed, directivo de Angry Birds: "La piratería puede que no sea tan mala"</p>
+			<p>Lo dijo en el momento más inoportuno ante la audiencia más inoportuna. El directivo de Angry Birds Mikael Hed explicó en Cannes (Francia), durante la conferencia de la industria musical Midem, que es "futil" combatir la piratería en los tribunales de justicia y que lo que hay que hacer es aprovecharse de ella. Tras recordarles que Angry Birds sufre las falsificaciones de sus juguetes y todo el merchaising, agregó que hay que aprovechar, sin embargo, esa popularidad que conlleva la piratería para ampliar el negocio. </p>
+			<a href="#" class="completa">leer mas</a>        
+			<p>"La piratería puede que no sea tan mala. Al final del día se puede hacer más negocio", añadió. Y dijo que había apendido de los errores de la industria musical, que empezó por amenazar a sus consumidores y luego paró. "Nosotros hablamos de ellos como fans. Si crece la base de fans nuestro negocio acabará creciendo.</p>
+			
+			<p>Finalmente vendió a la audiencia musical la aplicación de sus pájaros enfadados como un buen canal de venta de música.</p> 
+		</div>
+	</div>
+</body>
+<script>
+	//variables de inicio
+	const DEFAULT_FONT_SIZE = parseInt($(':root').css('font-size'));
+	let current_font_size = DEFAULT_FONT_SIZE;
+	const increment = 0.4; //este float es la cantidad de porcentaje que se le suma o resta en cada click de los botones
+
+	function changeFontSize(){
+		$(':root').css('font-size', current_font_size+"px");
+	}
+	function defectoClick(){
+		current_font_size = DEFAULT_FONT_SIZE;
+		changeFontSize();
+	}
+	function masClick(){
+		current_font_size += DEFAULT_FONT_SIZE * increment;
+		changeFontSize();
+	}
+	function menosClick(){
+		current_font_size -= DEFAULT_FONT_SIZE * increment;
+		changeFontSize();
+	}
+
+	//on clicks botones
+	$('#defecto').click(defectoClick);
+	$('#mas').click(masClick);
+	$('#menos').click(menosClick);
+
+	const p2 = $('p:nth-of-type(2)');
+	const p4 = $('p:nth-of-type(4)');
+	//ocultar el p2 y p4 en inicio
+	p2.hide();
+	p4.hide();
+	//hacer que el p4 tenga un fondo gris
+	p4.css("background-color","lightgray");
+	//bordes
+	$('#opciones').css("border","3px solid black");
+	$('p:nth-of-type(3)').css("border","3px solid black");
+
+	//on click a leer mas 
+	let showing = false;
+    $('.completa').click(function(){
+        //cambiar el texto de leer
+		let new_text = "leer mas";
+		if (showing == false){
+			new_text = "leer menos";
+		}
+		$(this).text(new_text);
+        showing = !showing;
+
+		//ocultar/mostrar el p2
+		p2.slideToggle();
+    });
+
+	//on click al p3
+	$('p:nth-of-type(3)').click(function(){
+		//ocultar/mostrar el p4
+		p4.slideToggle();
+	});
+
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>EXAMEN MODELO A</title>
+   </head>
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<body>
+    <h1>EXAMEN 1ª EVALUACIÓN MODELO A</h1>
+    <hr />
+    <h2>Ejercicio 1</h2>
+
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+        elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu,
+        consequat congue, commodo nec, commodo ultricies, turpis. Quisque
+        sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque
+        massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam
+        sit amet nisl elementum elit convallis malesuada. Phasellus magna sem,
+        semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu
+        adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam
+        non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        Duis scelerisque.</p>
+    <a id="ejercicio1" href="#">Ocultar contenidos</a>
+
+    <hr />
+    <h2>Ejercicio 2</h2>
+    <p>Hola, ¿tu nombre y población?</p>
+    Nombre: <input type="text" id="nombre">
+    Población: <input type="text" id="poblacion">
+    <input id="saludar" type="button" value="saludar" />
+    <p id="salida"></p> <!-- Aquí se mostrará lo que pide el ejercicio -->
+
+    <hr />
+    <h2>Ejercicio 3</h2>
+    <p>Introduce tu nombre de usuario: </p>
+    <input type="text" id="nomUsu">
+    <input id="generarClave" type="button" value="generar clave" />
+    <p id="resultado"></p> <!-- Aquí se mostrará lo que pide el ejercicio -->
+
+</body>
+<script>
+    //ocultar/mostrar parrafo
+    let mostrando = true;
+    $('#ejercicio1').on("click", function(){
+        $("p:nth-of-type(1n)").slideToggle();
+        mostrando = !mostrando;
+
+        if(mostrando == true){
+            $(this).text("ocultar contenido");
+        }else{
+            $(this).text("mostrar contenido");
+        }
+        
+    });
+
+    //saludar
+    document.getElementById("saludar").addEventListener("click", function(){
+        const nombre = document.getElementById("nombre").value;
+        const poblacion = document.getElementById("poblacion").value;
+        document.getElementById("salida").textContent = "Hola " + nombre + "! Eres de " + poblacion + ".";
+    });
+
+    function actualizarPass(){
+        const username = document.getElementById("nomUsu").value;
+
+        if(username.length == 0){ return; }
+
+        const password = username.charAt(0) + username.charAt(1) + '#' + new Date().getSeconds() + username.charAt(username.length - 1).toUpperCase();
+        
+        document.getElementById("resultado").textContent = "Hola, tu password es "+password;
+    }
+
+    //generar la password
+    document.getElementById("generarClave").addEventListener("click", actualizarPass);
+    setInterval(actualizarPass, 1000);
+</script>
+</html>

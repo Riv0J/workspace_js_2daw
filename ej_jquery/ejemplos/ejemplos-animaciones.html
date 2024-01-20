@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos efectos jQuery</title>
+    <style>
+        h4{margin:8px 0 8px 0;}
+        .code{font-family:monospace;font-size:0.9em;color:#5c0578;margin:6px 0 6px 0;}
+        .texta{width:400px;border:1px solid #ff9900;padding:12px;margin:16px 0 16px 0;font-size:0.9em;}
+        .texta2{padding:12px;width:400px;margin:6px 0 12px 0;}
+        .aBk{width:180px;background-color:#29447e;border:0;padding:6px 18px 6px 18px;font-size:0.9em;cursor:pointer;margin:6px 0 6px 0;font-weight:bold;color:#FFFFFF;}
+        .aBk:hover{background-color:#3d6cd1;}
+        .bloque{width:260px;background-color:#d4eefd;padding:16px;margin:12px 0 12px 0;border-radius:10px;font-size:1.2em;position: relative;text-align:center;}
+        #draggable{cursor:move;}
+        .hover{background-color:#ffff66;}
+        
+        </style>
+</head>
+
+<body>
+    <h1>JQuery, ejemplos</h1><br/>
+    <div id="cont1" class="bloque">BLOQUE DE PRUEBA</div>
+
+    <button class="aBk" id="c1">Ocultar bloque</button><br/>
+    <button class="aBk" id="c2">Mostrar bloque</button><br/>
+    <button class="aBk" id="c1b">Ocultar / Mostrar</button><br/>
+    <button class="aBk" id="c3">Cambiar tamaño</button><br/>
+    <button class="aBk" id="c4">Ocultar con FadeOut</button><br/>
+    <button class="aBk" id="c5">Mostrar con FadeIn</button><br/>
+    <button class="aBk" id="c6">Mover</button><br/>
+    <button class="aBk" id="c7">Cambiar estilo CSS</button><br/>
+
+    <h2>Copiar y escribir texto y HTML con JQuery</h2>
+    Al presionar el siguiente botón, se copia el título (h1) de esta página y se pega en un contenedor a continuación en formato de texto.<br/>
+    <button class="aBk" id="c12">Copiar y escribir texto</button><br/>
+    <div id="cont3" class=""></div>
+    <br/>
+    En el siguiente caso se copia el contenido del elemento H1 y se escribe en formato HTML.<br/>
+    <button class="aBk" id="c13">Copiar y escribir HTML</button><br/>
+    <div id="cont4" class=""></div>
+    <br/>
+    
+    <h2>Usar otros eventos con JQuery</h2>
+    <strong>Usar contenedor o bloque como evento</strong><br/>
+    En el siguiente ejemplo usamos como evento en vez de un enlace o un botón, el mismo contenedor o bloque.<br/>
+    Usamos tres métodos encadenados, hide(), delay() y show(), para que al dar clic encima se oculte el bloque.<br/>
+    <div id="cont2" class="bloque">Toca para ocultarme</div>
+    Vuelve a aparecer lentamente después de dos segundos.<br/>
+    <br/>
+    
+    <strong>Usar evento hover</strong><br/>
+    Otros de los eventos muy utilizados es hover, que permite efectuar cualquier acción al situar el cursor del ratón encima de un elemento.<br/>
+    <div class="yellow">
+    Por ejemplo al situarlo encima de este párrafo o bloque de texto, se muestra su fondo de color amarillo y retorna a su color predeterminado al retirarlo de encima.
+    </div>
+    Para eso usamos la clase definida hover con la función addClass(), a continuación removeClass().<br/>
+    Hover al igual que click acepta dos funciones.<br/>
+    <br/>
+    
+    <strong>Usar eventos del teclado</strong><br/>
+    Otros eventos que se emplean mucho en las páginas son los que desencadenan acciones en el teclado.<br/>
+    En el siguiente ejemplo usamos los eventos keyup() y keydown(), para contar la cantidad de caracteres en el cuadro de texto y mostrarlos.<br/>
+    <strong>Contador de caracteres</strong><br/>
+    <textarea cols='80' rows='3' class="texta2"></textarea><br/>
+    <div id="characters">Caracteres</div>
+    <br/>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="js/ejemplo-animaciones.js"></script>
+</html>

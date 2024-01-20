@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Reto 3-PI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+</head>
+
+<body>
+    <header>
+        <h1>Desarrollo Web en Entorno Cliente</h1>
+        <h2>Prueba Individual Reto 3</h2>
+    </header>
+    <section>
+        <h2>PARTE 1: JQuery y librerías</h2>
+        <select name="producto" id="producto">
+            <option selected value="0"> Selecciona el producto </option>
+            <option value="camiseta">Camiseta blanca  <span class="precio">25</span>€</option>
+            <option value="pantalon">Pantalones vaqueros  <span class="precio">45</span>€</option>
+            <option value="calcetines">Calcetines  <span class="precio">7</span>€</option>
+            <option value="jersey">Jersey marinero  <span class="precio">2222</span>€</option>
+        </select>
+        <input type="number" name="cantidad" value="1" min="1" max="20" step="1" />
+        <input type="button" value="comprar">
+        <textarea cols="50" rows="10">
+FACTURA
+---------------------------------
+</textarea>
+        <input type="button" value="imprimir">
+        
+    </section>
+    <hr />
+    <section>
+        <h2>PARTE 2: librería TEXTILLATE.JS JavaScript</h2>
+    </section>
+
+</body>
+
+</html>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="repaso_final_reto3.js"></script>
