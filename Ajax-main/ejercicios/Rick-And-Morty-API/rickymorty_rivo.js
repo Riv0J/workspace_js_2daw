@@ -5,21 +5,13 @@ const search_bar = document.getElementById('search-bar');
 const result_container = document.querySelector('.result');
 
 const search_count = document.createElement('div');
-        search_count.textContent = "0";
-        search_count.id = 'search_count';
-        search_container.appendChild(search_count);
+search_count.textContent = "0";
+search_count.id = 'search_count';
+search_container.appendChild(search_count);
 
-        const url ='https://rickandmortyapi.com/api/character/?page=1';
+const url ='https://rickandmortyapi.com/api/character/?page=1';
 
     search_button.addEventListener("click", async function (){
-        // no se utiliza porque la API no soporta buscar por %
-        // let busqueda_url = url;
-        // if(busqueda){
-        //     busqueda_url += "?";
-        //     busqueda_url += "name="+busqueda;
-        // }
-        // console.log(busqueda_url);
-
         await api_search();
     });
     async function api_search(){
@@ -49,37 +41,48 @@ const search_count = document.createElement('div');
                     } else{
                         characters.push(character);
                     }
-                    
-                    
                 });
-
             })
             .catch((err) =>{
-            console.log(err);
+                console.log("Hubo un error en la consulta");
+                console.log(err);
             });
         } while(next_page_url && next_page_url !=null);
         
-
-        characters.forEach(character => {
+        if(characters.length == 0){
             //create card
             const card = document.createElement('div');
             card.className = 'card';
             result_container.appendChild(card);
-
-            //create img
-            const img = document.createElement('img');
-            img.src = character.image;
-            card.appendChild(img);
-
+                
             //create title
             const nameDiv = document.createElement('div');
             nameDiv.className = 'card-title';
-            nameDiv.textContent = character.name;
-            card.appendChild(nameDiv);
-            
-            // actualizar el contador
+            nameDiv.textContent = "nu hay";
+            card.appendChild(nameDiv);      
+        } else {
+
+            characters.forEach(character => {
+                //create card
+                const card = document.createElement('div');
+                card.className = 'card';
+                result_container.appendChild(card);
+    
+                //create img
+                const img = document.createElement('img');
+                img.src = character.image;
+                card.appendChild(img);
+    
+                //create title
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'card-title';
+                nameDiv.textContent = character.name;
+                card.appendChild(nameDiv);
+            });
+        }
+        // actualizar el contador
         search_count.textContent = characters.length;
-        });
     }
-        //ON LOAD
-        document.addEventListener("DOMContentLoaded", api_search);
+
+//ON LOAD
+document.addEventListener("DOMContentLoaded", api_search);
